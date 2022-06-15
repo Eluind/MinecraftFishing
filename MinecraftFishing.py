@@ -7,7 +7,7 @@ import pyautogui
 from pymouse import PyMouse
 
 
-def SCREEN_CHECK():
+def screen_check():
     screenWidth, screenHeight = pyautogui.size() #获取屏幕分辨率
     center_X = screenWidth / 2 - 5               #截取鱼漂一定存在的图像的左上X座标
     center_Y = screenHeight / 2 + 370            #截取鱼漂一定存在的图像的左上Y座标,*可改为+250 增大检测范围
@@ -24,8 +24,8 @@ def SCREEN_CHECK():
     return True                #不存在鱼漂，鱼上钩，返回True
 
 
-def MOUSE_CLICK():
-    click = SCREEN_CHECK()
+def mouse_click():
+    click = screen_check()
     m = PyMouse()
     x, y = m.position()
     if click:
@@ -36,34 +36,34 @@ def MOUSE_CLICK():
 
 
 
-def RUN():
-    global EXIT
-    if not EXIT:
-        a = MOUSE_CLICK()
+def run():
+    global code_exit
+    if not code_exit:
+        a = mouse_click()
 
     else:
         while True:
             sys.exit()
 
 
-def START():
+def start():
     while True:
-        a = RUN()
+        a = run()
 
 
 
-def STOP():
-    global EXIT
+def stop():
+    global code_exit
     keyboard.wait('esc')
-    EXIT = True
+    code_exit = True
     return True
 
 
 if __name__ == '__main__':
-    EXIT = False
+    code_exit = False
 
-    t2 = threading.Thread(target=STOP)
-    t1 = threading.Thread(target=START)
+    t2 = threading.Thread(target=stop)
+    t1 = threading.Thread(target=start)
     keyboard.wait('ctrl')
     t2.start() 
     t1.start()
