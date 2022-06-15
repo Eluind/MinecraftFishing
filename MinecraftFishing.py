@@ -16,7 +16,7 @@ def SCREEN_CHECK():
 
     for y in range(im.size[1]):
         for x in range(im.size[0]):
-            pix = im.getpixel((x, y)
+            pix = im.getpixel((x, y))
             if pix[0] == 209 or pix[0] == 0:
 #                print(pix)
                 return False   #存在鱼漂，返回False
