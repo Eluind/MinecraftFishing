@@ -10,9 +10,9 @@ from pymouse import PyMouse
 def screen_check():
     screenWidth, screenHeight = pyautogui.size() #获取屏幕分辨率
     center_X = screenWidth / 2 - 5               #截取鱼漂一定存在的图像的左上X座标
-    center_Y = screenHeight / 2 + 370            #截取鱼漂一定存在的图像的左上Y座标,*可改为+250 增大检测范围
+    center_Y = screenHeight × 0.706            #截取鱼漂一定存在的图像的左上Y座标,*可改为+250 增大检测范围
     im = pyautogui.screenshot(region=(center_X, center_Y, 3, 70)) #根据左上X，Y座标截取宽度为3，长度为70的图像,*修改Y座标后必须修改此处，可改为+140 增大检测范围
-    im.save("123.png")
+#   im.save("123.png")
 
     for y in range(im.size[1]):
         for x in range(im.size[0]):
